@@ -1,31 +1,35 @@
 # Question #1
 
-Question to ChatGPT? Here is `some code`
-
-Here's some python:
+Question to ChatGPT, starting with some python code:
 
 ```python
-var foo
+foo = ""
 ```
-
 
 ---
 
 # Answer #1
 
-Here's the recommendation:
+Here's the recommendation from ChatGPT, to create a file called `tests/mytest.py`:
 
 ```python
-var bar
+foo = "bar"
+print(f"foo={foo}")
 ```
 
 ---
 
 # Action #1
 
+```bash
+cat <<EOT > tests/mytest.py
+foo = "bar"
+print(f"foo={foo}")
+EOT
+
 
 ---
 
 # Next
 
-[Chat 3](3.md)
+[Chat 2](2.md)
