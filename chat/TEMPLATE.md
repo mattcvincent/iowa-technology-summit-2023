@@ -10,7 +10,7 @@ foo = ""
 
 # Answer #1
 
-Here's the recommendation from ChatGPT, to create a file called `tests/mytest.py`:
+Here's the response from ChatGPT.  Create a file called `tests/mytest.py`:
 
 ```python
 foo = "bar"
