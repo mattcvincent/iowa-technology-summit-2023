@@ -46,6 +46,11 @@ coverage report && coverage html && open htmlcov/index.html
 python -m unittest discover -s tests -p "test_*"
 python -m unittest discover -s tests -p "integration_test_*"
 ```
+#### Markdown
+
+To open a separate preview window, use the keyboard shortcut `Ctrl+Shift+V`.
+
+To open side by side, use the keyboard shortcut `Ctrl+K V`.
 
 ### Git 
 
