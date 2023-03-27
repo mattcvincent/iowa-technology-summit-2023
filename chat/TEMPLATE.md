@@ -26,6 +26,7 @@ cat <<EOT > tests/mytest.py
 foo = "bar"
 print(f"foo={foo}")
 EOT
+```
 
 
 ---
