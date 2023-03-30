@@ -63,3 +63,7 @@ To open side by side, use the keyboard shortcut `Ctrl+K V`.
 ## Solution
 
 [Solution here](https://github.com/mattcvincent/ai-assisted)
+
+## Todo
+
+Tag v2.0 which will be 7 or so steps in...
