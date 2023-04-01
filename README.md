@@ -60,10 +60,60 @@ To open side by side, use the keyboard shortcut `Ctrl+K V`.
 * [https://demo.actitime.com/api/v1/swagger.json](https://demo.actitime.com/api/v1/swagger.json)
 * [.gitignore](https://raw.githubusercontent.com/github/gitignore/main/Python.gitignore)
 
-## Solution
+### Prerequisites
 
-[Solution here](https://github.com/mattcvincent/ai-assisted)
+The final steps ([Chat 15](chat/15.md) and [Chat 16](chat/16.md) of this project assume you've connected GitHub with your AWS account like shown below and you have replaced `SomeTypeOfAccessNeededToCreateABucket` with an appropriate policy of your choice): 
 
-## Todo
+```yaml
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Connect GitHub to AWS
+Parameters:
+  GitHubOrg:
+    Type: String
+  RepositoryName:
+    Type: String
+  OIDCProviderArn:
+    Description: ARN for the GitHub OIDC Provider.
+    Default: ""
+    Type: String
 
-Tag v2.0 which will be 7 or so steps in...
+Conditions:
+  CreateOIDCProvider: !Equals 
+    - !Ref OIDCProviderArn
+    - ""
+
+Resources:
+  Role:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: GitHubActionsRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/SomeTypeOfAccessNeededToCreateABucket
+      AssumeRolePolicyDocument:
+        Statement:
+          - Effect: Allow
+            Action: sts:AssumeRoleWithWebIdentity
+            Principal:
+              Federated: !If 
+                - CreateOIDCProvider
+                - !Ref GithubOidc
+                - !Ref OIDCProviderArn
+            Condition:
+              StringLike:
+                token.actions.githubusercontent.com:sub: !Sub repo:${GitHubOrg}/iowa-technology-summit-2023:*
+                token.actions.githubusercontent.com:aud: sts.amazonaws.com
+
+  GithubOidc:
+    Type: AWS::IAM::OIDCProvider
+    Condition: CreateOIDCProvider
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList: 
+        - sts.amazonaws.com
+      ThumbprintList:
+        - 6938fd4d98bab03faadb97b34396831e3780aea1
+
+Outputs:
+  Role:
+    Value: !GetAtt Role.Arn 
+```
