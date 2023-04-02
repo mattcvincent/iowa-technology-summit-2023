@@ -31,6 +31,7 @@ echo "ACTITIME_PASSWORD=manager" >> .env
 
 Add these GitHub Actions secrets:
 * `ACTITIME_PASSWORD`, `ACTITIME_URL`, `ACTITIME_USERNAME`, `AWS_ROLE`
+* (`AWS_ROLE` is output from the CloudFormation stack you in `Prerequisites` below)
 
 
 
