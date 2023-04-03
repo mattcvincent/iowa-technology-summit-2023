@@ -4,7 +4,7 @@
 
 ### System Prerequisites
 
-* Install [git](https://git-scm.com/downloads), [python 3.9+](https://www.python.org/downloads/)
+* Install [git](https://git-scm.com/downloads), [python 3.9](https://www.python.org/downloads/)
 
 ### Additional Recommendations
 
