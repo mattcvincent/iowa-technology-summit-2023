@@ -1,5 +1,7 @@
 # AI-Assisted Software Engineering Demo
 
+Prepared for the Iowa Technology Summit 2023
+
 ## Setup
 
 ### System Prerequisites
